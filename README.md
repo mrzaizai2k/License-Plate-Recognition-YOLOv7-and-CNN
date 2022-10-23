@@ -14,8 +14,8 @@ I created a [Vietnamese License Plate Recognition tool using image processing Op
 * [2. Introduction](#2-Introduction)
 * [3. License Plate Detection](#3-License-Plate-Detection)
 * [4. Hough Transform Alignment](#4-Hough-Transform-Alignment)
-* [3. License Plate Detection](#3-License-Plate-Detection)
-Hough Transform Alignment
+* [5. Character Segmentation and Recognition](#5-Character-Segmentation-and-Recognition)
+* [6. Conclusion](#6-Conclusion)
 
 ## 1. How to use
 
@@ -67,6 +67,23 @@ Now I come up with different approach.
 3. Calculate angles and `angles.mean()`
 4. Rotate the LP with `angles.mean()`
 
-<p align="center"><img src="doc/License_plate_cropped.png" width="200"></p>
-<p align="center"><i>Figure. Detected License Plate </i></p>
+<p align="center"><img src="doc/HoughLP.png" width="300">            <img src="doc/rotate_img.png" width="300"></p>
+<p align="center"><i>Figure. Rotated License Plate </i></p>
 
+## 5. Character Segmentation and Recognition
+
+Here I used the same technique as before. I won't talk much about this part, because so many people have done that
+1. Find contours
+2. Filter out the right contour
+3. Recognize with CNN
+
+<p align="center"><img src="doc/LP crop and rotate.png" width="300">            <img src="doc/imgROI.png" width="100"></p>
+<p align="center"><i>Figure. Find and extract characters </i></p>
+
+<p align="center"><img src="doc/char segment 2.png" width="400"></p>
+<p align="center"><i>Figure. Character segmentation result </i></p>
+
+## 6. Conclusion
+
+<p align="center"><img src="doc/final_result 2.png" width="500">            <img src="doc/LP_detected_img.png" width="500"></p>
+<p align="center"><i>Figure. Final results </i></p>
