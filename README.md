@@ -49,7 +49,7 @@ Difference form my previous repo. I detected LP with just image preprocessing. I
 
 You can find the whole dataset and the code on my kaggle: [YOLO V7 License Plate Detection](https://www.kaggle.com/code/bomaich/yolo-v7-license-plate-detection)
 
-**Dataset include 1000 images of both 1 and 2 lines Vietnamese License Plates**
+**[Dataset](https://www.kaggle.com/datasets/bomaich/vnlicenseplate) include 1000 images of both 1 and 2 lines Vietnamese License Plates**
 
 The result is quite good
 
@@ -58,7 +58,7 @@ The result is quite good
 
 ## 4. Hough Transform Alignment
 
-With previous repo, I tried to find the biggest contour, and from 4 coordinates of that contour, I can rotate the License Plate ;however, it has 2 problems with contour
+With previous repo, I tried to find the biggest contour, and from 4 coordinates of that contour, I can rotate the License Plate; however, it has 2 problems with contour
 * Not sure that the biggest contour is the LP. Somtimes the view is not good which is hard to find the right contour
 * Not sure that we can approx that contour to 4 points. If not, we can't calculate the rotate angle
 
