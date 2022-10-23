@@ -48,6 +48,7 @@ Difference form my previous repo. I detected LP with just image preprocessing. I
 4. Train YOLOv7 on Kaggle 
 
 You can find the whole dataset and the code on my kaggle: [YOLO V7 License Plate Detection](https://www.kaggle.com/code/bomaich/yolo-v7-license-plate-detection)
+
 **Dataset include 1000 images of both 1 and 2 lines Vietnamese License Plates**
 
 The result is quite good
