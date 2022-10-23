@@ -3,14 +3,22 @@ This project is for the ultimate manner of identifying the License Plate. Combin
 	
 I created a [Vietnamese License Plate Recognition tool using image processing OpenCV and KNN algorithm](https://github.com/mrzaizai2k/VIETNAMESE_LICENSE_PLATE) (simple, but effective)
 
+<p align="center"><img src="doc/input_img.jpg" width="500"></p>
+<p align="center"><i>Figure. Input license plate </i></p>
+
+<p align="center"><img src="doc/LP_detected_img.png" width="500"></p>
+<p align="center"><i>Figure. Final result </i></p>
+
 ## Table of contents
 * [1. How to use](#1-How-to-use)
-* [2. User](#2-User)
-* [3. Dataset](#3-Dataset)
+* [2. Introduction](#2-Introduction)
+* [3. License Plate Detection](#3-License-Plate-Detection)
+* [4. Hough Transform Alignment](#4-Hough-Transform-Alignment)
+* [3. License Plate Detection](#3-License-Plate-Detection)
+Hough Transform Alignment
 
 ## 1. How to use
 
-**HOW TO USE:**
 * Remember to set up neccesary libraries in `requirements.txt` 
 * Download the model used for YOLOv7 model `LP_detect_yolov7_500img.pt` and CNN model `weight.h5` in Git RELEASES and put them in the right path like in the code
 * To test on image/video, run `main_image.py`/ `main_video.py`. Remember to change the path of image/video. I don't provide videos for testing, but you can record it yourself. **1920x1080 pixels, 24 fps recommend**
@@ -21,22 +29,31 @@ I created a [Vietnamese License Plate Recognition tool using image processing Op
 * `Preprocess.py`, `utils_LP.py` and `vid2img.py` are util files. Spend time to explore them.
 * `yolo-v7-license-plate-detection.ipynb` is the training of YOLOv7
 
-As you know:
-**The main stages in the license plate recoginition algorithm**
+## 2. Introduction
+As you know: **There are 3 main stages in the license plate recoginition algorithm**
 
 1. License Plate Detection
 2. Character Segmentation
 3. Character Recognition
 
 <p align="center"><img src="https://user-images.githubusercontent.com/40959407/130982072-a4701080-e40d-42c1-8fc5-062da340ca5b.png" width="300"></p>
-<p align="center"><i>Figure 1. The main stages in the license plate recoginition algorithm </i></p>
+<p align="center"><i>Figure. The main stages in the license plate recoginition algorithm </i></p>
 
-## PHÁT HIỆN VÀ TÁCH BIỂN SỐ:
-**The main stages in detecting and extract the license plate**
-1. Taking picture from the camera
-2. Gray scaling
-3. Increasing the contrast level
-4. Noise Decreasing by Gaussian filter
-5. Adaptive threshold for image binarization
-6. Canny Edge detection
-7. Detect the plate by drawing contours and if..else
+## 3. License Plate Detection
+Difference form my previous repo. I detected LP with just image preprocessing. It was quite complicated and low accuracy. But now with YOLOv7, all we have to do is collecting the data and train the model
+
+1. Instead of taking a lot of pictures for training, I recoreded the video and use `vid2img.py` to split frames into images
+2. I used [labelImg](https://github.com/heartexlabs/labelImg#create-pre-defined-classes) to label each images. We will have the `.txt` file in the same folder with the image. `.txt` file include label, x, y, w, h
+3. Split the dataset into 70/20/10
+4. Train YOLOv7 on Kaggle 
+
+You can find the whole dataset and the code on my kaggle: [YOLO V7 License Plate Detection](https://www.kaggle.com/code/bomaich/yolo-v7-license-plate-detection)
+* Dataset include 1000 images of both 1 and 2 lines Vietnamese License Plates
+
+The result is quite good
+
+<p align="center"><img src="doc/License_plate_cropped.png" width="200"></p>
+<p align="center"><i>Figure. Detected License Plate </i></p>
+
+## 4. Hough Transform Alignment
+
